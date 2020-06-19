@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NOTEPAD</title>
+<link rel = "icon" href ="https://img.icons8.com/ios-filled/50/000000/notepad.png"
+        type = "image/x-icon">
+
+
+
+
+	<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+	<script src="jquery-ui/jquery-ui.js"></script>
+	<meta content="width=device-width, initial-scale=1" name="viewport" charset="UTF-8">
+		<meta name="theme-color" content="#1bbc9b">
+	<link href="jquery-ui/jquery-ui.css" rel="stylesheet">
+	<script>
+  $( function() {
+    $( document ).tooltip();
+  } );
+  </script>
+  
+	<style type="text/css">
+		body{
+			font-size: 15px;
+			margin: 0px;
+			padding:0px;
+			background-color: LightBlue;
+		}
+
+
+		.menu{
+			/*padding-top: 10px;*/
+			background-color: #393939;
+			display: flex;
+			position: relative;			
+			width: 100%;
+			font-family: sans-serif;
+
+
+		}
+		#menuitem{
+
+			/*width:200px;*/
+			
+			color: white;
+			height:15px;
+			padding:5px;
+			/*padding-right: 20px;*/
+			width: 150px;
+			padding-top: 10px;
+			border-right: 1px solid grey;
+			display: flex;
+			flex-direction: column-reverse;
+			justify-content: center;
+			align-items: center;
+			/*border-radius:5PX; */
+		}
+
+		.logo
+		{
+			/*padding:0px;*/
+			font-size: 15px;
+			font-weight: bolder;
+			background-color: WHITE;
+			color: grey;
+			width:200px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding-left: 20px;
+			align-content: center;
+			border-bottom: 1px solid grey; 			
+		}
+		.clipboardmenu{
+			/*position: relative;*/
+			display: flex;
+			height : 0px;
+			width:100%;
+			background:#EEEEEE;
+			display: none;
+			visibility: hidden;
+		}
+		.paste{
+			padding-top: 10px;
+			padding-bottom: 20px;
+			padding-left:20px;
+			padding-right: 20px;
+			width:50px;
+
+		}
+		.paste-font{
+			padding:0px;
+
+		}
+
+		.cut{
+			padding-top: 10px;
+			padding-bottom: 20px;
+			padding-left:20px;
+			padding-right: 20px;
+			width:50px;
+
+		}
+		
+.copy{
+			padding-top: 10px;
+			padding-bottom: 20px;
+			padding-left:20px;
+			padding-right: 20px;
+			width:50px;
+}
+.select{
+			padding-top: 10px;
+			padding-bottom: 20px;
+			padding-left:20px;
+			padding-right: 20px;
+			width:50px;
+}
+.white-area{
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+
+
+}
+.text{
+
+	height:1000px;
+	background-color: white;
+	width: 90%;
+	padding-left: 10px;
+	padding-right: 10px;
+	/*margin: 10px;*/
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+
+}
+.break{
+	width:100%;
+	height:15px;
+}
+.textarea{
+	padding: 5px;
+	width:90%;
+	margin-top: 0px;
+	margin: 5px;
+	height: 90%;
+	font-size:15px;
+	font-family: "Times new Roman";
+
+}	
+textarea{
+			border: none;
+			outline: none;
+			font-size : 15px;
+			display: absolute;
+}	
+
+.fontmenu{
+			display:flex;
+			/*position: relative;*/
+			/*display: flex;*/
+			height:80px;
+			width:100%;
+			background:#EEEEEE;
+
+			border-bottom: 1px solid grey;
+			/*display: none;*/
+			/*visibility: hidden;*/
+
+
+		}
+
+
+
+
+.fonttype{
+
+	margin: 5px;
+	height:20px;
+	width:150px;
+	margin-right: 0px;
+	margin-left: 0px;	
+}
+
+select.fontsize{
+	height:20px;
+	width:40px;
+	margin: 30px;
+	margin-left: 0px;
+	/*background-color: blue;	*/
+	/*margin: 30px;*/
+}
+.fontfamily{
+	/**/
+	padding-top: 15px;
+	margin-left:20px; 
+	width:150px;
+	/*border-bottom: 1px solid grey;*/
+
+}
+.fontsize{
+		width:50px;
+	padding-top: 15px;
+	border-right: 1px solid grey;
+	/*border-bottom: 1px solid grey;*/
+}
+label{
+	/*margin: 5px;*/
+	margin-bottom: 0px;
+	height:20px;
+	width: 50px;
+	color: grey;
+	font-size: 15px;
+}
+.ft{
+	margin-top:5px;
+}
+
+.size{
+	margin: 5px;
+	margin-bottom: 0px;
+	display: flex;
+	height:40px;
+	width:120px;
+
+}
+.dec{
+	display: flex;
+	height:30px;
+	width:120px;
+	margin: 5px;
+	margin-top: 0px;
+}
+
+
+.but{
+	border: 1px solid black;
+	width:30px;
+	height: 25px;
+	font-size: 15px;
+	/*background-color: grey;*/
+	/*color: white;*/
+	margin: 5px;
+	/*margin-top:0px;*/
+	display: flex;
+	justify-content: center;
+	flex-direction: column-reverse;
+	align-items: center;
+}
+.but:hover{
+	background-color: #C2C2C2;
+
+}
+.fontcolor{
+	color:red;
+	font-weight: bold;
+}
+
+
+.hidden{
+		height: 0px;
+		visibility: hidden;
+		display: none;
+}
+.visible{
+
+	visibility: visible;
+	height: 80px;
+	display: flex;
+}
+
+.activebut{
+	background-color: #EEEEEE;
+}
+
+.ital{
+	font-style: italic;
+}
+
+.under{
+	text-decoration: underline;
+}
+.bolder{
+	font-weight: bold;
+}
+.colorh{		
+	display: none;
+	height: 20px;
+	width: 120px;
+	background-color: white;
+	border: ridge;
+	padding-top: 5px;
+}
+.colorv{
+	display: flex;
+}
+.col{
+	
+
+	margin-top: 5px;
+
+	margin: 1px;
+	height: 10px;
+	width: 10px;
+	border: 1px solid;
+}
+
+.red{
+	background-color: red;
+}
+.blue{
+	background-color: blue;
+}		
+.green{
+	background-color: green;
+}
+.yellow{
+	background-color: yellow;
+}
+.black{
+	background-color: black;
+}
+.pink{
+	background-color: pink;
+}
+.orange{
+	background-color: orange;
+}
+.white{
+	background-color: white;
+}
+.grey{			
+	background-color: grey;
+}
+.brown{
+	background-color: brown;
+}
+
+
+
+.editmenu{
+			display:none;
+			height:80px;
+			width:100%;
+			background:#EEEEEE;
+			border-bottom: 1px solid grey;
+		}
+.edis{
+	display: flex;
+}
+
+.align{
+
+			/*display:block;*/
+			display: flex;
+			width:190px;
+			float: left;
+}
+.left{		
+			height: 30px;
+			padding-top: 30px;
+			padding-bottom: 20px;
+			padding-left: 20px;
+			padding-right: 18px;
+			width:25px;
+
+		}
+.leftfont{
+			height: 30px;
+
+			padding:0px;
+			color:grey;
+			font-size: 12px;
+		}
+.upperfont{
+			padding:0px;
+			/*height: 30px;*/
+	
+			color:grey;
+			font-size: 11px;
+		}
+
+
+.right{
+			/*float: left;*/
+			padding-top: 30px;
+			padding-bottom: 20px;
+			padding-left:0px;
+			height: 30px;
+	
+			padding-right: 18px;
+			width:25px;
+
+		}
+.center{
+
+			padding-top: 30px;
+			padding-bottom: 20px;
+			padding-left:0px;
+			padding-right: 18px;
+			height: 30px;
+	
+			width:25px;
+
+		}
+		
+
+
+.justify{
+			padding-top: 30px;
+			padding-bottom: 20px;
+			padding-left:0px;
+			padding-right: 18px;
+			height: 30px;
+	
+			width:25px;
+			border-right: 1px solid grey;
+
+		}
+
+
+
+
+
+
+
+.addleftalign{
+	text-align: left;
+	align-content: left;
+}
+
+
+.addrightalign{
+	text-align: right;
+	align-content: right;
+}
+	
+
+	.addjustifyalign{
+		text-align: justify;
+		align-content: center;
+		justify-content: center;
+	}	
+.addcenteralign{
+	text-align: center;
+	align-content: center;
+}
+.case{
+	padding-top: 4px;
+/*margin:5px;*/
+width:80px;
+height:77px;
+/*width:50px;*/
+display: flex;
+flex-direction: column;
+/*justify-content: center;*/
+align-items: center;
+margin-right: 3px;
+/*padding-top: 0px;*/
+border-right: 1px solid grey;
+
+}
+.upper{
+	height: 15px;
+	padding: 3px;
+	padding-left: 0px;
+	padding-right: 0px;
+	background-color: #393939;
+	color:white;
+	/*padding-left: 5px;*/
+	text-align: center;
+	padding-top: 3px;
+	font-size: 10px;
+	border: 1px solid black;
+	/*margin-bottom: px;*/
+	/*height: 12px;*/
+	width:70px;
+	/*margin-left: 5px;*/
+	/*margin-top:3px;*/
+	/*margin-top: 0px;*/
+	padding-bottom: 1px;
+	/*margin-bottom:0px;*/
+}
+
+
+.lower{
+	padding-top: 3px;
+
+	background-color: #393939;
+	color:white;
+	/*padding: 2px;*/
+	padding-bottom: 4px;
+	width:70px;
+	text-align: center;
+	margin: 5px;
+	font-size:14px;
+	
+	/*font-size: 12px;*/
+	height: 12px;
+	margin-bottom: 5px;
+	border: 1px solid black;
+
+	
+}
+.cap{
+	padding-top: 3px;
+
+	color:white;
+	margin: 5px;
+	margin-top: 0px;
+	background-color: #393939;
+	
+	font-size: 13px;
+	/*font-size: 12px;*/
+	height: 15px;
+	text-align: center;
+	
+	border: 1px solid black;
+	
+	width:70px;
+
+}
+.alignfont{
+	
+	position: absolute;
+	justify-content: center;
+	text-align: center;
+	/*display: block;*/
+	width:190px;
+	height:30px;
+	padding-top: 5px;
+	color: #393939;
+	/*width: 190px;*/
+}
+.page
+{	padding-top:5px;
+	padding-left: 3px;  
+	display: block;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.bgcolor{
+	margin: 5px;
+	margin-left: 0px;
+	padding-left: 0px;
+	text-align: center;
+	height: 22px;
+	width: 22px;
+	background-color: red;
+	color: white;
+	margin-right:2px;
+	border: 1px solid black;
+}
+.border{
+	border: double black;
+	margin: 5px;
+	margin-right: 2px;
+	margin-left:5px;
+	text-align: center;
+	height: 20px;
+	width: 20px;
+
+}
+
+.line{
+	display: flex;
+	font-size: 12px;
+	color: grey;
+
+
+}
+
+.line1{
+	display: flex;
+	/*font-size: 12px;*/
+	/*color: grey;*/
+
+
+}
+.line1v{
+	display: none;
+}
+.pfont{
+	padding-top: 10px;
+}
+/*
+.colorh{		
+	display: none;
+	height: 20px;
+	width: 120px;
+	background-color: white;
+	border: ridge;
+	padding-top: 5px;
+}*/
+.bcolor{
+	height: 20px;
+	width: 80px;
+	background-color: white;
+	border: ridge;
+	padding-top: 5px;
+	display: none;
+}
+.bcolorv{
+	display: flex;
+}
+.col{
+	
+
+	margin-top: 5px;
+
+	margin: 1px;
+	height: 10px;
+	width: 10px;
+	border: 1px solid;
+}
+
+.redb{
+	background-color: red;
+}
+.blueb{
+	background-color: blue;
+}		
+.greenb{
+	background-color: green;
+}
+.yellowb{
+	background-color: yellow;
+}
+.blackb{
+	background-color: black;
+}
+.pinkb{
+	background-color: pink;
+}
+.orangeb{
+	background-color: orange;
+}
+.chocolteb{
+	background-color: white;
+}
+
+.magentab{
+	background-color: magenta;
+}
+
+.aquab{
+	background-color: aqua;
+}
+.greyb{			
+	background-color: grey;
+}
+.brownb{
+	background-color: brown;
+}
+.borderdis{
+
+	float:left;
+	display: none;
+	font-size: 12px;
+	margin-top: 50px;
+	/*margin-left:30%;*/
+	/*height: 200px;*/
+	/*width: 100px;*/
+			/*display: none;*/
+	/*color: red;*/
+	border: ridge;
+	background-color: Lightblue;
+	/*display: viewport;*/
+	/*z-index: -12;*/
+}
+
+.boderdisv{
+		display: absolute;
+		/*display: block;*/
+		/*z-index: 0;*/
+
+}
+.apply{		display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-content: center;
+		border: ridge;
+		color: Black;
+		font-weight: bold;
+		background-color: white;
+		width:40px;
+			margin-left: 25%;
+}
+
+
+
+
+
+.bor{
+		margin: 5px;
+		display: block;
+}
+.bord{
+	width:5px;
+	padding: 0px;
+	margin: 0px;
+}
+
+</style>
+
+
+</head>
+<body>
+
+
+<div class="menu">
+	<div class="logo" > WordNote </div>
+	<div class="clipboard" name="clipboard" id="menuitem" onclick="clip">Clipboard</div>
+	<div class="font" name="font" id="menuitem" onclick="fon">Font</div>
+	<div class="edit" name="edit" id="menuitem">Edit</div>
+
+</div>
+	<div class="clipboardmenu">
+
+			<div class="paste" id="pastearea" >
+
+				<img src="paste1.png" class="paste-font" height="40px" width="30px" title="Paste Not supoorted in your browser use Ctrl+V "/>Paste
+			</div>
+			<div class="cut" id="cutarea"><img src="cut1.png" height="40px" width="30px" ><div class="paste-font">Cut</div></div>
+
+			<div class="copy" id="copyarea">
+				<img src="copy1.png" height="40px"  class="paste-font"width="30px"/>Copy
+			</div>
+
+			<div class="select" id="selectarea"> <img src="select-all.png" height="40px" class="paste-font"width="30px"/>Select</div>
+	</div>
+	
+	<div class="fontmenu">
+		<div class="fontfamily">
+		<label>Font Family</label>
+		<select class="fonttype">
+			<option value="1">Arial Black</option>
+			<option value="2" selected="">Times New Roman</option>
+			<option value="3">Comic Sans MS</option>
+			<option value="4">Charcoal</option>
+			<option value="5">Helvetica</option>
+			<option value="6">Courier New</option>
+		</select>	
+	</div>
+	<div class="fontsize">
+			<label >Size</label>
+		<select class="ft">
+			<option value=10>10</option>
+			<option value="12" >12</option>
+			<option value="15" selected>15</option>
+			<option value="18">18</option>
+			<option value="20">20</option>
+			<option value="25">25</option>
+		</select>	
+
+			</div>
+			<div class="hoz">
+			<div class="size">
+					<div class="fontincrease but" > A +</div>
+					<div class="fontdecrease but"> A -</div>
+					<div class="fontcolor but" > A </div>
+			</div>
+			<div class="colorh">
+					 <div class="col red"></div>
+					 <div class="col blue"></div>
+					 <div class="col green"></div>
+					 <div class="col yellow"></div>
+					 <div class="col black"></div>
+					 <div class="col pink"></div>
+					 <div class="col orange"></div>
+					 <div class="col white"></div>
+					 <div class="col grey"></div>
+					 <div class="col brown"></div>
+
+
+
+
+
+
+					  </div>
+			<div class="dec">
+					<div class="bold but" title="Bold"><b> B</b> </div>
+					<div class="italic but" title="Italic"><i> I</i> </div>
+					<div class="underline but" title="Underline"> <u>U </u></div>
+					</div>
+			</div>
+</div>
+
+<div class="editmenu">
+<div class="align">
+	<div class="alignfont">
+		ALIGNMENT
+	</div>
+	<div class="left" id="leftarea" >
+
+						
+			
+	
+			<img class="leftalign" src="https://img.icons8.com/ios-filled/50/000000/align-cell-content-left.png" height="20px" width="15px"  class="leftalign"/><div class="leftfont">
+			Left</div>
+	</div>
+	<div class="right" id="rightarea" >
+
+		<img class="rightalign" src="https://img.icons8.com/ios-filled/50/000000/align-cell-content-right.png" height="20px" width="15px"/>
+		<div class="leftfont">
+			Right</div>
+	</div>
+	<div class="center" id="centerarea" >
+
+		<img class="centeralign" src="https://img.icons8.com/ios-filled/50/000000/align-center.png" height="20px" width="20px"/ >
+		<div class="leftfont">
+			Center </div>
+
+	</div>
+
+
+
+
+
+	<div class="justify" id="justifyarea" >
+
+		<img class="justifyalign" src="https://img.icons8.com/ios-filled/50/000000/align-justify.png" height="20px" width="15px"/><div class="leftfont">
+			Justify </div>
+	
+
+
+</div>
+</div>
+	<div class="case">
+		<div class="upper">UPPERCASE</div>
+		<div class="lower">lowercase</div>
+		<div class="cap">Capitalise</div>
+
+	</div>
+	<div class="page">
+		<div class="line"><div class="bgcolor"><bold>A</bold></div><div class="pfont">PageColor</div></div>
+		<div class="bcolor">
+					 <div class="col redb"></div>
+					 <div class="col blueb"></div>
+					 <div class="col greenb"></div>
+					 <div class="col yellowb"></div>
+					 <div class="col blackb"></div>
+					 <div class="col pinkb"></div>
+				  </div>
+				  <div class="bcolor">
+					
+					 <div class="col orangeb"></div>
+					 <div class="col aquab"></div>
+					 <div class="col greyb"></div>
+					 <div class="col brownb"></div>
+					 <div class="col chocolteb"></div>
+					 <div class="col magentab"></div>
+
+
+
+
+
+
+					  </div>
+					<!-- </div> -->
+		<div class="line1">
+			<div class="bord">
+				<select class="borders">
+					<option  name="bor" class="no" id="bor" >Border</option>
+					<option  name="bor" class="dotted" id="bor">None</option>
+					<option name="bor" class="solid" id="bor">Solid</option>
+					<option name="bor" class="dashed" id="bor">Dashed</option>
+					<option  name="bor" class="double" id="bor">Double</option>
+					<option  name="bor" class="ridge" id="bor">Ridge</option>
+					<option  name="bor" class="dotted" id="bor">Dotted</option>
+					<!-- <input type="radio" name="solid" class="solid"> -->
+					</select>
+
+					</div></div>
+
+	</div>
+
+	</div>	
+	</div>
+	
+
+
+
+
+
+
+
+	</div>
+		</div>
+
+	<div class="break"></div>
+
+	<div class="white-area">
+		<div class="text"> 
+			
+			
+			<textarea class="textarea"></textarea>
+	</div>
+
+
+
+
+
+<!-- <a href="https://icons8.com/icon/8153/align-justify">Align Justify icon by Icons8</a> -->
+<script type="text/javascript">
+	
+
+	//checking juery and jquery.ui
+
+	// if(typeof jQuery !== "undefined")
+	// {
+	// 	alert("jquery  working")
+	// }
+
+	// if(typeof jQuery.ui !== "undefined")
+	// {
+	// 	alert("jquery  UI  working")
+	// }
+
+
+
+
+
+	$(".text").height($(window).height() - $(".menu").height() - 50 );
+	 // $(".whitearea").height($(window).height() - $("#header").height() - 15);
+	 $(".textarea").height($(".text").height() - 70);
+
+
+   		
+   		$(".clipboard").click(clip);
+   		$(".font").click(fon);
+   		$(".edit").click(eid);
+   		function clip()
+   		{
+   			$(".editmenu").removeClass("edis");
+   			$(".fontmenu").addClass("hidden");
+   			$(".clipboardmenu").toggleClass("visible");
+   		
+   		}
+   		function eid()
+   		{
+   			$(".editmenu").toggleClass("edis");
+   			$(".fontmenu").addClass("hidden");
+   			$(".clipboardmenu").removeClass("visible");
+   		
+   		}
+                
+   		// document.querySelector(".font").addEventListener("click", fon);
+   		// document.querySelector(".clipboard").addEventListener("click", clip);
+   			function fon()
+   		{
+
+   			
+   			$(".editmenu").removeClass("edis");
+   			$(".fontmenu").toggleClass("hidden");
+   			$(".clipboardmenu").removeClass("visible");
+   			// alert("hie")
+   				
+
+      		}
+	 	///////////////////////////////////clipboard/////////////////////////////////////
+
+	function copy1()
+	{
+		var t = document.querySelector("textarea");
+
+		var text =t.value;
+		var indexStart=t.selectionStart;
+		var indexEnd=t.selectionEnd;
+	 	var s = text.substring(indexStart, indexEnd);
+		document.execCommand("copy");
+		alert("copied");
+	}
+	
+	const c = document.getElementById("copyarea");
+	c.addEventListener("click", copy1);
+	function cut1()
+	{
+		var ct = document.querySelector("textarea");
+		var text =ct.value;
+		var indexStart=ct.selectionStart;
+		var indexEnd=ct.selectionEnd;
+	 	var s = text.substring(indexStart, indexEnd);
+		document.execCommand("cut");
+		alert("cut");
+	}
+ 	 const cutevent = document.getElementById("cutarea");
+ 	 cutevent.addEventListener("click",cut1);
+
+ 	  function select1()
+ 	  {
+
+ 	  	var sl = document.querySelector("textarea");
+ 	  	sl.select();
+ 	  	// alert("selected");
+ 	  }
+ 	  const selectevent = document.getElementById("selectarea");
+ 	  selectevent.addEventListener("click",select1);
+
+           ///////////////////////FONT MENU /////////////////////////////////////////////
+
+
+           $(".fonttype").change(sel);
+
+          function sel()
+           {
+           	 var val = $(".fonttype option:selected") .text();
+           	 // alert(val);
+           	 // $(".textarea").css("color","red");
+
+           	 switch(val)
+           	 {
+           	 	case "Arial Black": $(".textarea").css("font-family","'Arial black', Gadget, sans-serif");
+           	 	break;
+
+           	 	case 'Times New Roman': $(".textarea").css("font-family","'Times New Roman', Times, serif");
+           	 	break;
+
+           	 	case 'Comic Sans MS': $(".textarea").css("font-family","'Comic Sans MS', cursive, sans-serif");
+           	 	break;
+
+           	 	case "Charcoal": $(".textarea").css("font-family","Impact, Charcoal, sans-serif");
+           	 	break;
+
+           	 	case "Helvetica": $(".textarea").css("font-family","Arial, Helvetica, sans-serif");
+           	 	break;
+
+           	 	case 'Courier New': $(".textarea").css("font-family","'Courier New', Courier, monospace");
+           	 	break;
+           	 }
+         }
+
+         $(".ft").change(siz);
+         function siz()
+         {
+         	var size = $(".ft option:selected").text();
+         	// alert(size);
+         
+         	switch(size)
+         	{
+         		case "10" : $(".textarea").css("font-size","10px");
+         		break;
+         		case "12" : $(".textarea").css("font-size","12px");
+         		break;
+         		case "15" : $(".textarea").css("font-size","15px");
+         		break;
+         		case "18" : $(".textarea").css("font-size","18px");
+         		break;
+         		case "20" : $(".textarea").css("font-size","20px");
+         		break;
+         		case "25" : $(".textarea").css("font-size","25px");
+         		break;
+         	}
+
+
+
+         }
+
+       $(".fontincrease").click(inc);
+       function inc()
+       {
+       		var arr = "";
+       		var size = $(".textarea").css("font-size");
+       		// alert(size);
+       		size.split("");
+       		for(var i=0 ;i<size.length;i++)
+       		{
+       			if(size[i] == "p")
+       				{// {alert("p")
+       				break;
+       				}
+       			arr += size[i];
+
+       			} 
+       		
+       		// alert(arr);
+       		var s = parseInt(arr);
+       		s = s+2;
+       		var st = "";
+       		st += s;
+       		st += "px";
+       		// alert(st);
+       		$(".textarea").css("font-size",st);
+       		// alert(s);
+
+
+
+
+}
+         
+ $(".fontdecrease").click(dec);
+       function dec()
+       {
+       		var arr = "";
+       		var size = $(".textarea").css("font-size");
+       		// alert(size);
+       		size.split("");
+       		for(var i=0 ;i<size.length;i++)
+       		{
+       			if(size[i] == "p")
+       				{// {alert("p")
+       				break;
+       				}
+       			arr += size[i];
+
+       			} 
+       		
+       		// alert(arr);
+       		var s = parseInt(arr);
+       		s = s-2;
+       		var st = "";
+       		st += s;
+       		st += "px";
+       		// alert(st);
+       		$(".textarea").css("font-size",st);
+       		// alert(s);
+}
+
+$(".bold").click(function (){
+
+	$(".textarea").toggleClass("bolder");
+	
+	if($(".textarea").hasClass("bolder") == true)
+	{
+		$(".bold").css("background-color","grey");
+	}
+	else {
+		$(".bold").css("background-color","#EEEEEE");
+	}
+
+})
+
+
+$(".underline").click(function (){
+
+	$(".textarea").toggleClass("under");
+	
+	if($(".textarea").hasClass("under") == true)
+	{
+		$(".underline").css("background-color","grey");
+	}
+	else {
+		$(".underline").css("background-color","#EEEEEE");
+	}
+
+})
+
+
+$(".italic").click(function (){
+
+	$(".textarea").toggleClass("ital");
+	
+	if($(".textarea").hasClass("ital") == true)
+	{
+		$(".italic").css("background-color","grey");
+	}
+	else {
+		$(".italic").css("background-color","#EEEEEE");
+	}
+
+})
+
+
+$(".fontcolor").click(function() 
+{
+		$(".colorh").toggleClass("colorv");
+		$(".fontcolor").toggleClass("activebut");
+			if($(".colorh").hasClass("colorv") == true)
+	{
+		$(".fontcolor").css("background-color","grey");
+		$(".dec").css("display","none");
+	}
+	else {
+		$(".fontcolor").css("background-color","#EEEEEE");
+		$(".dec").css("display","flex");
+	}
+})
+
+$(".red").click(function(){
+		$(".textarea").css("color","red");
+})
+$(".blue").click(function(){
+		$(".textarea").css("color","blue");
+})
+$(".yellow").click(function(){
+		$(".textarea").css("color","yellow");
+	})
+$(".pink").click(function(){
+		$(".textarea").css("color","pink");
+	})
+$(".grey").click(function(){
+		$(".textarea").css("color","grey");
+	})
+$(".brown").click(function(){
+		$(".textarea").css("color","brown");
+	})
+$(".green").click(function(){
+		$(".textarea").css("color","green");
+	})
+$(".orange").click(function(){
+		$(".textarea").css("color","orange");
+	})
+$(".white").click(function(){
+		$(".textarea").css("color","white");
+	})
+$(".black").click(function(){
+		$(".textarea").css("color","black");
+	})
+
+
+
+$(".rightalign").click(function (){
+	$(".textarea").removeClass("addleftalign");
+	$(".textarea").removeClass("addjustifyalign");
+	$(".textarea").toggleClass("addrightalign");
+	$(".textarea").removeClass("addcenteralign");
+})
+
+
+$(".leftalign").click(function (){
+	$(".textarea").removeClass("addrightalign");
+	$(".textarea").removeClass("addjustifyalign");
+	$(".textarea").toggleClass("addleftalign");
+	$(".textarea").removeClass("addcenteralign");
+})
+
+$(".justifyalign").click(function (){
+	$(".textarea").removeClass("addleftalign");
+	$(".textarea").removeClass("addrightalign");
+	$(".textarea").toggleClass("addjustifyalign");
+	$(".textarea").removeClass("addcenteralign");
+})
+
+
+$(".centeralign").click(function(){
+	$(".textarea").removeClass("addleftalign");
+	$(".textarea").removeClass("addjustifyalign");
+	$(".textarea").removeClass("addrightalign");
+	$(".textarea").toggleClass("addcenteralign");
+})
+
+
+$(".upper").click(function()
+{	
+	// alert("hie");
+	$(".textarea").css("text-transform","uppercase");
+
+
+})
+
+$(".lower").click(function()
+{	
+	// alert("hie");
+		$(".textarea").css("text-transform","lowercase");
+
+
+})
+
+$(".cap").click(function()
+{	
+	// alert("hie");
+	$(".textarea").css("text-transform","capitalize");
+
+
+})
+
+
+$(".bgcolor").click(function()
+{
+	$(".bcolor").toggleClass("bcolorv");
+	$(".line1").toggleClass("line1v");
+	
+	// $(".textarea").css("background-color","pink");
+
+})
+
+
+$(".redb").click(function(){
+		$(".text").css("background-color","red");
+		$(".textarea").css("background-color","red")
+})
+$(".blueb").click(function(){
+		$(".text").css("background-color","blue");
+		$(".textarea").css("background-color","blue")
+})
+$(".yellowb").click(function(){
+		$(".text").css("background-color","yellow");
+		$(".textarea").css("background-color","yellow")
+	})
+$(".pinkb").click(function(){
+		$(".text").css("background-color","pink");
+		$(".textarea").css("background-color","pink")
+	})
+$(".greyb").click(function(){
+		$(".text").css("background-color","grey");
+		$(".textarea").css("background-color","grey")
+	})
+$(".brownb").click(function(){
+		$(".text").css("background-color","brown");
+		$(".textarea").css("background-color","brown")
+	})
+$(".greenb").click(function(){
+		$(".text").css("background-color","green");
+		$(".textarea").css("background-color","green")
+	})
+$(".orangeb").click(function(){
+		$(".text").css("background-color","orange");
+		$(".textarea").css("background-color","orange")
+
+
+	})
+$(".magentab").click(function(){
+		$(".text").css("background-color","magenta");
+		$(".textarea").css("background-color","magenta")
+
+	})
+$(".blackb").click(function(){
+		$(".text").css("background-color","black");
+		$(".textarea").css("background-color","black")
+
+	})
+
+
+$(".aquab").click(function(){
+		$(".text").css("background-color","aqua");
+		$(".textarea").css("background-color","aqua")
+
+	})
+
+
+$(".chocolteb").click(function(){
+		$(".text").css("background-color","white");
+		$(".textarea").css("background-color","white")
+
+	})
+$(".border").click(function ()
+{
+	$(".borderdis").addClass("boderdisv");
+	$(".textarea").css("border","none");
+})
+$(".apply").click(function()
+{
+	$(".borderdis").removeClass("boderdisv");
+
+})
+
+
+
+		$(".solid").click(function () 
+		{
+			$(".textarea").css("border","solid");
+		})
+
+
+// 		if((document.querySelector(".double").checked) == true)
+// 		{
+// 			$(".textarea").css("border","double");
+// 		}
+// 		if((document.querySelector(".dashed").checked) == true)
+// 		{
+// 			$(".textarea").css("border","dashed");
+// 		}if((document.querySelector(".ridge").checked) == true)
+// 		{
+// 			$(".textarea").css("border","ridge");
+// 		}if((document.querySelector(".dotted").checked) == true)
+// 		{
+// 			$(".textarea").css("border","dotted");
+// 		}
+		
+// })
+
+
+           $(".borders").change(sel1);
+
+          function sel1()
+           {
+           	 var val = $(".borders option:selected") .text();
+           	 // alert(val);
+           	 // $(".textarea").css("color","red");
+
+           	 switch(val)
+           	 {
+           	 	case "Solid": $(".textarea").css("border","solid");
+           	 	break;
+
+           	 case "Dashed": $(".textarea").css("border","dashed");
+           	 	break;
+
+           	 	case "Double": $(".textarea").css("border","Double");
+           	 	break;
+
+           	 	case "None": $(".textarea").css("border","None");
+           	 	break;
+
+           	 	case "Ridge": $(".textarea").css("border","Ridge");
+           	 	break;
+
+           	 	case "Dotted": $(".textarea").css("border","dotted");
+           	 	break;
+           	 }
+         }
+
+</script>
+</body>
+</html>
